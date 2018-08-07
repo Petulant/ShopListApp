@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="darkolivegreen">
+    <ion-title>
+     Shopping List
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+    </ion-refresher>
+  
+    <img src="../../assets/imgs/gro.jpg" id="myGro" style="align-items: center"><br><br>
+    <ion-input  [(ngModel)]="name" placeholder="Type Your Grocery Item here...."></ion-input>
+
+    <button ion-button  block color="darkolivegreen" (click)="writeCuisine()">AddItems</button><br>
+
+      <ion-list>
+      <ion-item-sliding *ngFor="let item of items">
+        <ion-item >
+            {{item.name.name}}
+        </ion-item>
+
+        
+        <ion-item-options side="right">
+          <button ion-button color="darkolivegreen" (click)="delete( item.keyname)"><ion-icon name="trash"></ion-icon>Delete</button>
+        <!-- </ion-item-options> -->
+    
+        <!-- <ion-item-options side="right"> -->
+          <button ion-button  color="darkseagreen" (click)="updateDate(item.keyname)"><ion-icon ios="ios-create" md="md-create"></ion-icon>update</button>
+        </ion-item-options> 
+        
+      </ion-item-sliding>
+    </ion-list>
+
+ 
+
+</ion-content>
